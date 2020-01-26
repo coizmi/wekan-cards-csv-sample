@@ -1,0 +1,14 @@
+{
+  "name": "wekan-cards-csv",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}
