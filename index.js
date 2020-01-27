@@ -1,6 +1,7 @@
 const ApiClient = require("./apiclient");
 const CardFetcher = require("./cardfetcher");
 const { createObjectCsvWriter } = require("csv-writer");
+const addbom = require("./addbom");
 
 async function fetch(url, username, password) {
   const client = new ApiClient(url);
@@ -16,8 +17,9 @@ async function fetch(url, username, password) {
       continue;
     }
 
+    const path = `${__dirname}/${board.title}.csv`;
     const csvWriter = createObjectCsvWriter({
-      path: `${__dirname}/${board.title}.csv`,
+      path,
       header: [
         { id: "id", title: "id" },
         { id: "swimlane", title: "swimlane" },
@@ -27,7 +29,8 @@ async function fetch(url, username, password) {
       ]
     });
 
-    csvWriter.writeRecords(cards);
+    await csvWriter.writeRecords(cards);
+    await addbom(path);
   }
 }
 

@@ -20,7 +20,7 @@ class CardFetcher {
         swimlane._id
       );
       if (cards.length === 0) {
-        return [];
+        continue;
       }
       const converted = this.convert(cards, swimlane, listTitles);
       results.push(...converted);
